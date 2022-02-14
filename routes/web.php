@@ -19,6 +19,4 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'role:Student,Admin'])->name('dashboard');
-
-require __DIR__ . '/auth.php';
+})->middleware(['auth'])->name('dashboard');
