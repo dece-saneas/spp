@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Models\Role;
+
 trait HasRole
 {
     /**
@@ -13,10 +15,17 @@ trait HasRole
     }
 
     /**
-     * Determine if user has the role.
+     * Determine if user has the roles.
+     * 
+     * @param string
+     * @return bool
      */
-    public function hasRole($role)
+    public function hasRole(...$roles): bool
     {
-        return $this->role->name == $role;
+        foreach ($roles as $role) {
+            if ($this->role->name == $role) return true;
+        };
+
+        return false;
     }
 }
